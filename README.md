@@ -42,10 +42,15 @@ Digunakan dalam klausa WHERE untuk mencari data dengan pola tertentu dalam kolom
 
 # Coming Soon
 **5. Select Like Query**
+
 **6. Select Like order by Query**
+
 **7. Select order by Query**
+
 **8. insert where Query**
+
 **9. delete Query**
+
 
 
 
