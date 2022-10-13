@@ -1,2 +1,41 @@
 # Query-Builder-SQL-Alpha-test-
 Query builder CRUD, sama seperti fitur laravel
+
+
+
+
+
+**1. Inset Query**
+
+Berfungsi untuk menambahkan data kedalam tabel database
+
+*Contoh penggunaan:*
+
+`Query::table(nama_table)->insert([kolom1,kolom2,kolom3],[data1,data2,data3]);`
+
+**2. Select Query**
+
+Digunakan untuk menampilkan, mengambil maupun memilah informasi dari database atau data dari satu tabel serta beberapa tabel dalam relasi.
+
+*Contoh penggunaan:*
+
+`Query::table(nama_table)->select([kolom1,kolom2,kolom3])->default();`
+
+**3. Select Where Query**
+
+Digunakan untuk memfilter hasil SELECT dengan mengekstrak record yang memenuhi persyaratan tertentu
+
+*Contoh penggunaan:*
+
+`Query::table(nama_table)->select([kolom1,kolom2,kolom3])->where([kolom1 => data1]);`
+
+
+**4. Select Like Query**
+
+Digunakan dalam klausa WHERE untuk mencari data dengan pola tertentu dalam kolom.
+
+*Method ini juga menggunakan klausa where
+
+*Contoh penggunaan:*
+
+`Query::table(nama_table)->select([kolom1,kolom2,kolom3])->like([kolom1 => data1]);`
