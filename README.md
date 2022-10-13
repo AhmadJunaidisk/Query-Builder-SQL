@@ -5,7 +5,7 @@ Query builder CRUD, sama seperti fitur laravel
 
 
 
-**1. Inset Query**
+# 1. Insert Query
 
 Berfungsi untuk menambahkan data kedalam tabel database
 
@@ -13,7 +13,7 @@ Berfungsi untuk menambahkan data kedalam tabel database
 
 `Query::table(nama_table)->insert([kolom1,kolom2,kolom3],[data1,data2,data3]);`
 
-**2. Select Query**
+# 2. Select Query
 
 Digunakan untuk menampilkan, mengambil maupun memilah informasi dari database atau data dari satu tabel serta beberapa tabel dalam relasi.
 
@@ -21,7 +21,7 @@ Digunakan untuk menampilkan, mengambil maupun memilah informasi dari database at
 
 `Query::table(nama_table)->select([kolom1,kolom2,kolom3])->default();`
 
-**3. Select Where Query**
+# 3. Select Where Query
 
 Digunakan untuk memfilter hasil SELECT dengan mengekstrak record yang memenuhi persyaratan tertentu
 
@@ -30,7 +30,7 @@ Digunakan untuk memfilter hasil SELECT dengan mengekstrak record yang memenuhi p
 `Query::table(nama_table)->select([kolom1,kolom2,kolom3])->where([kolom1 => data1]);`
 
 
-**4. Select Like Query**
+# 4. Select Like Query
 
 Digunakan dalam klausa WHERE untuk mencari data dengan pola tertentu dalam kolom.
 
@@ -39,3 +39,16 @@ Digunakan dalam klausa WHERE untuk mencari data dengan pola tertentu dalam kolom
 *Contoh penggunaan:*
 
 `Query::table(nama_table)->select([kolom1,kolom2,kolom3])->like([kolom1 => data1]);`
+
+# Coming Soon
+**5. Select Like Query**
+**6. Select Like order by Query**
+**7. Select order by Query**
+**8. insert where Query**
+**9. delete Query**
+
+
+
+
+
+
