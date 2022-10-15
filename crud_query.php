@@ -4,9 +4,29 @@ require_once "koneksi.php";
 
 class Query extends DB {
 
+    /**
+     * variabel static ini berisi nama tabel
+     * @return string
+     */
     private static $tb;
+
+    /**
+     * variabel ini berisi statement query yang akan
+     * dieksekusi di fungsi exec()
+     * @return void
+     */
     private $query_stmt;
+
+    /** 
+     * variabel ini berisi key dari array
+     * @return string
+     */
     private $key;
+
+    /**
+     * variabel ini berisi kode untuk "mentrigger" fungsi exec()
+     * @return int
+     */
     private $trigger_code;
 
     public static function table(string $arg) {
@@ -38,6 +58,10 @@ class Query extends DB {
         }
     }
 
+    public function setQuery(string $query) {
+        $this->query_stmt .= $query;
+    }
+
     public function select(array $column) {
         $column_stmt = "";
         if(is_array($column)) {
@@ -48,32 +72,27 @@ class Query extends DB {
                     $column_stmt .= $q;
                 }
             }
-            $this->query_stmt = "SELECT $column_stmt FROM ".self::$tb;
+            $this->trigger_code = 0;
+            self::setQuery("SELECT $column_stmt FROM ".self::$tb);
             return $this;
         }
-    }
-
-    public function default() {
-        $stmt = $this->koneksi->prepare($this->query_stmt);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function where(array $arg) {
         if(is_array($arg)) {
             $this->key = $arg[array_key_first($arg)];
-            $this->query_stmt .= " WHERE ".array_key_first($arg). " = ?";
+            self::setQuery(" WHERE ".array_key_first($arg). " = ?");
             $this->trigger_code = 1;
-            return $this->exec();
+            return $this;
         }
     }
 
     public function like(array $arg) {
         if(is_array($arg)) {
             $this->key = $arg[array_key_first($arg)];
-            $this->query_stmt .= " WHERE ".array_key_first($arg). " LIKE ?";
+            self::setQuery(" WHERE ".array_key_first($arg). " LIKE ?");
             $this->trigger_code = 2;
-            return $this->exec();
+            return $this;
         }
     }
 
@@ -85,7 +104,21 @@ class Query extends DB {
         } else if($this->trigger_code == 2) {
             $stmt->execute(["%".$this->key."%"]);
             return $stmt->fetchall(PDO::FETCH_ASSOC);
-        } 
+        } else if($this->trigger_code == 0) {
+            $stmt = $this->koneksi->prepare($this->query_stmt);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
     }
 
+    public function numrows() {
+        $stmt = $this->koneksi->prepare($this->query_stmt);
+        if($this->trigger_code == 1) {
+            $stmt->execute([$this->key]);
+        } else if($this->trigger_code == 2) {
+            $stmt->execute(["%".$this->key."%"]);
+        }
+        return $stmt->rowCount();
+    }
+ 
 }
