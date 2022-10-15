@@ -51,6 +51,8 @@ Digunakan dalam klausa WHERE untuk mencari data dengan pola tertentu dalam kolom
 
 **9. delete Query**
 
+**10. Right/left/natural/inner join query**
+
 
 
 
