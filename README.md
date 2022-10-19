@@ -1,4 +1,4 @@
-# Query-Builder-SQL-Alpha-test-
+# Query-Builder-SQL
 Query builder CRUD, sama seperti fitur laravel
 
 
