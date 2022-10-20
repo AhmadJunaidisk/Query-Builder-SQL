@@ -19,7 +19,7 @@ Digunakan untuk menampilkan, mengambil maupun memilah informasi dari database at
 
 *Contoh penggunaan:*
 
-`Query::table(nama_table)->select([kolom1,kolom2,kolom3])->default();`
+`Query::table(nama_table)->select([kolom1,kolom2,kolom3])->getall();`
 
 # 3. Select Where Query
 
@@ -27,7 +27,7 @@ Digunakan untuk memfilter hasil SELECT dengan mengekstrak record yang memenuhi p
 
 *Contoh penggunaan:*
 
-`Query::table(nama_table)->select([kolom1,kolom2,kolom3])->where([kolom1 => data1]);`
+`Query::table(nama_table)->select([kolom1,kolom2,kolom3])->where([kolom1 => data1])->getall();`
 
 
 # 4. Select Like Query
@@ -38,10 +38,26 @@ Digunakan dalam klausa WHERE untuk mencari data dengan pola tertentu dalam kolom
 
 *Contoh penggunaan:*
 
-`Query::table(nama_table)->select([kolom1,kolom2,kolom3])->like([kolom1 => data1]);`
+`Query::table(nama_table)->select([kolom1,kolom2,kolom3])->like([kolom1 => data1])->getall();`
+
+
+# 5. Update Query
+
+Digunakan dalam klausa WHERE untuk mencari data dengan pola tertentu dalam kolom.
+
+*Method ini juga menggunakan klausa where
+
+*Contoh penggunaan:*
+
+`Query::table("login_history")
+            ->update(
+                ["kolom1","kolom2","kolom3"],
+                ["data1", "data2", "data3"]
+            )
+            ->where(["kolom1" => "data1"])
+            ->push();`
 
 # Coming Soon
-**5. Select Like Query**
 
 **6. Select Like order by Query**
 
@@ -52,6 +68,8 @@ Digunakan dalam klausa WHERE untuk mencari data dengan pola tertentu dalam kolom
 **9. delete Query**
 
 **10. Right/left/natural/inner join query**
+
+**11. Between query **
 
 
 
