@@ -11,7 +11,7 @@ Berfungsi untuk menambahkan data kedalam tabel database
 
 *Contoh penggunaan:*
 
-`Query::table(nama_table)->insert([kolom1,kolom2,kolom3],[data1,data2,data3]);`
+`Query::table(nama_table)->insert([kolom1,kolom2,kolom3],[data1,data2,data3])->push();`
 
 # 2. Select Query
 
