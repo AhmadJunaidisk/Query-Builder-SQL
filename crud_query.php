@@ -119,6 +119,11 @@ class Query extends DB {
         }
         return $this;
     }
+    
+    public function limit(int $arg) {
+        self::setQuery(" LIMIT $arg");
+        return $this;
+    }
 
     public function like(array $arg) {
         if(is_array($arg)) {
