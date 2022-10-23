@@ -66,7 +66,7 @@ Berfungsi untuk mengubah data yang ada di tabel database
             ->push();`
             
             
-![carbon (13)](https://user-images.githubusercontent.com/94750834/196996310-8ed6a647-3533-464e-83fc-5523dcc3c74c.png)
+![carbon (20)](https://user-images.githubusercontent.com/94750834/197398334-da0535c6-1c7e-4c8e-8ecd-3d47ef03ed43.png)
 
 # 6. Inner Join Query
 
@@ -74,25 +74,35 @@ Berfungsi untuk meng-merge / menggabungkan 2 atau lebih data dari dalam tabel
 
 *Contoh penggunaan:*
 
-`Query::table("pengguna")   
+`Query::table("nama_table")   
                 ->select("*")
-                ->innerJoin("login_history", ["login_history.status" => "pengguna.id"])
+                ->innerJoin("nama_table2", ["nama_table2.kolom" => "nama_table.kolom"])
                 ->getall();`
                 
- ![carbon (14)](https://user-images.githubusercontent.com/94750834/196996668-20729d9b-40a6-4c65-86f4-c42e3d8b8279.png)
+![carbon (19)](https://user-images.githubusercontent.com/94750834/197398050-f304f4c3-01f6-4611-994e-06b939f6e812.png)
+ 
+ 
+ # 7. Limit Query
+
+Berfungsi untuk mengambil data berdasarkan limit
+
+*Contoh penggunaan:*
+
+`Query::table("pengguna")->select("*")->limit(1)->getall();`
+
+![carbon (17)](https://user-images.githubusercontent.com/94750834/197397833-996b42d9-2906-4677-9cd1-f1d3505cdaba.png)
+
 
 # Coming Soon
 
-**6. Select Like order by Query**
+**8. Select Like order by Query**
 
-**7. Select order by Query**
+**9. Select order by Query**
 
-**8. insert where Query**
+**10. insert where Query**
 
-**9. delete Query**
+**11. delete Query**
 
-**10. Right/left/natural query**
+**12. Right/left/natural query**
 
-**11. Between query**
-
-**11. Limit query**
+**13. Between query**
